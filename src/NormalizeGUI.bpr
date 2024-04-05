@@ -1,0 +1,195 @@
+# ---------------------------------------------------------------------------
+!if !$d(BCB)
+BCB = $(MAKEDIR)\..
+!endif
+
+# ---------------------------------------------------------------------------
+# Section EDI
+# ---------------------------------------------------------------------------
+# La section suivante du Makefile du projet est gérée par l'EDI de BCB.
+# Il est recommandé d'utiliser l'EDI pour modifier les valeurs de cette
+# section.
+# ---------------------------------------------------------------------------
+
+VERSION = BCB.04.04
+# ---------------------------------------------------------------------------
+PROJECT = NormalizeGUI.exe
+OBJFILES = NormalizeGUI.obj Main.obj About.obj Language.obj
+RESFILES = NormalizeGUI.res
+RESDEPEN = $(RESFILES) Main.dfm About.dfm Language.dfm
+LIBFILES =
+LIBRARIES = VCLX40.lib VCL40.lib
+SPARELIBS = VCL40.lib VCLX40.lib
+PACKAGES = VCL40.bpi VCLX40.bpi VCLJPG40.bpi
+DEFFILE =
+# ---------------------------------------------------------------------------
+PATHCPP = .;
+PATHASM = .;
+PATHPAS = .;
+PATHRC = .;
+DEBUGLIBPATH = $(BCB)\lib\debug
+RELEASELIBPATH = $(BCB)\lib\release
+USERDEFINES =
+SYSDEFINES = NO_STRICT
+# ---------------------------------------------------------------------------
+CFLAG1 = -I..\..\Projects;NormalizeGUI;$(BCB)\include;$(BCB)\include\vcl -O2 -Hc \
+  -H=$(BCB)\lib\vcl40.csm -w -Ve -a8 -k- -vi -c -b- -w-par -w-inl -Vx -tW -tWM \
+  -D$(SYSDEFINES);$(USERDEFINES)
+PFLAGS = -U..\..\Projects;NormalizeGUI;$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH) \
+  -I..\..\Projects;NormalizeGUI;$(BCB)\include;$(BCB)\include\vcl -$Y- -$L- -$D- \
+  -v -JPHNE -M
+RFLAGS = -i..\..\Projects;NormalizeGUI;$(BCB)\include;$(BCB)\include\vcl
+AFLAGS = /i..\ /i.. /iNormalizeGUI /i$(BCB)\include /i$(BCB)\include\vcl /mx /w2 /zn
+LFLAGS = -L..\..\Projects;NormalizeGUI;$(BCB)\lib\obj;$(BCB)\lib;$(RELEASELIBPATH) -aa \
+  -Tpe -x -Gn
+# ---------------------------------------------------------------------------
+ALLOBJ = c0w32.obj sysinit.obj $(OBJFILES)
+ALLRES = $(RESFILES)
+ALLLIB = $(LIBFILES) $(LIBRARIES) import32.lib cp32mt.lib
+# ---------------------------------------------------------------------------
+!ifdef IDEOPTIONS
+
+[Version Info]
+IncludeVerInfo=1
+AutoIncBuild=0
+MajorVer=0
+MinorVer=1
+Release=0
+Build=0
+Debug=0
+PreRelease=0
+Special=0
+Private=0
+DLL=0
+Locale=1036
+CodePage=1252
+
+[Version Info Keys]
+CompanyName=Bruce Heller
+FileDescription=Normalize GUI
+FileVersion=0.1.0.0
+InternalName=Normalize GUI
+LegalCopyright=2001 Bruce Heller
+LegalTrademarks=
+OriginalFilename=
+ProductName=Normalize GUI
+ProductVersion=0.1.0.0
+Comments=Normalize is ©2000-2001 Manuel Kasper <mk@neon1.net>
+
+[HistoryLists\hlIncludePath]
+Count=3
+Item0=..\;..;NormalizeGUI;$(BCB)\include;$(BCB)\include\vcl
+Item1=..\..\Projects;NormalizeGUI;$(BCB)\include;$(BCB)\include\vcl
+Item2=..;NormalizeGUI;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=3
+Item0=..\;..;NormalizeGUI;$(BCB)\lib\obj;$(BCB)\lib
+Item1=..\..\Projects;NormalizeGUI;$(BCB)\lib\obj;$(BCB)\lib
+Item2=..;NormalizeGUI;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[Debugging]
+DebugSourceDirs=$(BCB)\source\vcl
+
+[Parameters]
+RunParams=
+HostApplication=
+RemoteHost=
+RemotePath=
+RemoteDebug=0
+
+[Compiler]
+InMemoryExe=0
+ShowInfoMsgs=0
+
+!endif
+
+# ---------------------------------------------------------------------------
+# SECTION MAKE
+# ---------------------------------------------------------------------------
+# Cette section du fichier projet n'est pas utilisée par l'EDI de BCB. Elle est destinée
+# à la construction à partir de la ligne de commande en utilisant l'utilitaire MAKE.
+# ---------------------------------------------------------------------------
+
+.autodepend
+# ---------------------------------------------------------------------------
+!if !$d(BCC32)
+BCC32 = bcc32
+!endif
+
+!if !$d(CPP32)
+CPP32 = cpp32
+!endif
+
+!if !$d(DCC32)
+DCC32 = dcc32
+!endif
+
+!if !$d(TASM32)
+TASM32 = tasm32
+!endif
+
+!if !$d(LINKER)
+LINKER = ilink32
+!endif
+
+!if !$d(BRCC32)
+BRCC32 = brcc32
+!endif
+
+# ---------------------------------------------------------------------------
+!if $d(PATHCPP)
+.PATH.CPP = $(PATHCPP)
+.PATH.C   = $(PATHCPP)
+!endif
+
+!if $d(PATHPAS)
+.PATH.PAS = $(PATHPAS)
+!endif
+
+!if $d(PATHASM)
+.PATH.ASM = $(PATHASM)
+!endif
+
+!if $d(PATHRC)
+.PATH.RC  = $(PATHRC)
+!endif
+# ---------------------------------------------------------------------------
+$(PROJECT): $(OBJFILES) $(RESDEPEN) $(DEFFILE)
+    $(BCB)\BIN\$(LINKER) @&&!
+    $(LFLAGS) +
+    $(ALLOBJ), +
+    $(PROJECT),, +
+    $(ALLLIB), +
+    $(DEFFILE), +
+    $(ALLRES)
+!
+# ---------------------------------------------------------------------------
+.pas.hpp:
+    $(BCB)\BIN\$(DCC32) $(PFLAGS) {$< }
+
+.pas.obj:
+    $(BCB)\BIN\$(DCC32) $(PFLAGS) {$< }
+
+.cpp.obj:
+    $(BCB)\BIN\$(BCC32) $(CFLAG1) -n$(@D) {$< }
+
+.c.obj:
+    $(BCB)\BIN\$(BCC32) $(CFLAG1) -n$(@D) {$< }
+
+.c.i:
+    $(BCB)\BIN\$(CPP32) $(CFLAG1) -n. {$< }
+
+.cpp.i:
+    $(BCB)\BIN\$(CPP32) $(CFLAG1) -n. {$< }
+
+.asm.obj:
+    $(BCB)\BIN\$(TASM32) $(AFLAGS) $<, $@
+
+.rc.res:
+    $(BCB)\BIN\$(BRCC32) $(RFLAGS) -fo$@ $<
+# ---------------------------------------------------------------------------
