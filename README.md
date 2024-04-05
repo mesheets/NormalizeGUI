@@ -7,7 +7,7 @@ or ensure that the CLI executable is in your PATH.
 
 From Bruce:
 -----------
-After some research over the net, I discover that there wasn't any GUI for the great tool [Normalize]((https://github.com/mesheets/NormalizeCLI) is.
+After some research over the net, I discover that there wasn't any GUI for the great tool [Normalize](https://github.com/mesheets/NormalizeCLI) is.
 So I decided to take a little of my time to do one.
 This is what you got now ;).
 
