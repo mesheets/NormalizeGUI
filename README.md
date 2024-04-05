@@ -5,6 +5,8 @@ A GUI by Bruce Heller for the [PCM WAV normalizer command-line utility](https://
 Add the GUI executable and associated INI file to the same directory as the Normalize CLI executable,
 or ensure that the CLI executable is in your PATH.
 
+Available as a [PortableApp.com](https://portableapps.com/) package at the [link here](https://github.com/mesheets/PAF-NormalizePortable).
+
 From Bruce:
 -----------
 After some research over the net, I discover that there wasn't any GUI for the great tool [Normalize](https://github.com/mesheets/NormalizeCLI) is.
