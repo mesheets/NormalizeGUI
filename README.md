@@ -27,11 +27,11 @@ This software is free software, released under the GNU general public license. R
 
 * * *
 
-The source code was from Bruce’s web site at [http://www.bheller.com](https://web.archive.org/web/20050214115515/http://bheller.com/index01.htm) (no longer online, so links to Archive.org).
+The source code was from Bruce’s web site at [http://www.bheller.com/](https://web.archive.org/web/20050214115515/http://bheller.com/index01.htm) (no longer online, so links to Archive.org).
 From Bruce:
 - “Please don't look at it, it's not commented or well coded but hey ! It works ! ;)”
 - “Please report any changes you do to the GUI.”
-- You use this software at your own risk.  Bruce Heller and Manuel Kasper cannot be responsible for any damage caused by it.
+- Use this software at your own risk.  Bruce Heller and Manuel Kasper cannot be responsible for any damage caused by it.
 
 Normalize GUI is written with Borland C++ Builder 4, so you will need it to compile and/or modify it.
 - https://winworldpc.com/product/borland-c-builder/5x
@@ -39,6 +39,7 @@ Normalize GUI is written with Borland C++ Builder 4, so you will need it to comp
 * * *
 
 Normalize GUI is ©2001 Bruce Heller <bheller@bheller.com>
+
 Normalize is ©2000-2004 Manuel Kasper <mk@neon1.net>
 
 This repository is not affiliated with the original authors; just looking to preserve a useful utility!
