@@ -205,7 +205,7 @@ void __fastcall TNormalize_Main::normalizeClick(TObject *Sender)
     if((batch=fopen(filepos.c_str(),"w"))!=NULL)
 	  {
     	fprintf(batch,"@echo off\n");
-      fprintf(batch,"%s ",normalize.c_str());
+      fprintf(batch,"\"%s\" ",normalize.c_str());
       if(Methode_ratio->Checked)
       {
       	fprintf(batch,"-l %s ",multiply->Text.c_str());
@@ -234,13 +234,13 @@ void __fastcall TNormalize_Main::normalizeClick(TObject *Sender)
       }
       if(singlefile->Checked)
       {
-      	fprintf(batch,"%s",GetShortPath(InWave->Text).c_str());
+      	fprintf(batch,"\"%s\"",GetShortPath(InWave->Text).c_str());
       }
       else
       {
-      	fprintf(batch,"%s*.wav",GetShortPath(InWave->Text).c_str());
+      	fprintf(batch,"\"%s*.wav\"",GetShortPath(InWave->Text).c_str());
       }
-      fprintf(batch,"\ndel %s",filepos.c_str());
+      fprintf(batch,"\ndel \"%s\"",filepos.c_str());
 	  	fclose(batch);
 
 	  	system(filepos.c_str());
