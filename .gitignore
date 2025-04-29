@@ -1,3 +1,9 @@
+# Borland Files
+*.ddp
+*.str
+*.tds
+
+
 # Prerequisites
 *.d
 

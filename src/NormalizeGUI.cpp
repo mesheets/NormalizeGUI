@@ -1,7 +1,6 @@
 //---------------------------------------------------------------------------
 #include <vcl.h>
 #pragma hdrstop
-USERES("NormalizeGUI.res");
 USEFORM("Main.cpp", Normalize_Main);
 USEFORM("About.cpp", AboutBox);
 USEFORM("Language.cpp", Language_form);
@@ -13,9 +12,9 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 		Application->Initialize();
 		Application->Title = "Normalize GUI v0.1";
 		Application->CreateForm(__classid(TNormalize_Main), &Normalize_Main);
-		Application->CreateForm(__classid(TAboutBox), &AboutBox);
-		Application->CreateForm(__classid(TLanguage_form), &Language_form);
-		Application->Run();
+                 Application->CreateForm(__classid(TAboutBox), &AboutBox);
+                 Application->CreateForm(__classid(TLanguage_form), &Language_form);
+                 Application->Run();
 	}
 	catch (Exception &exception)
 	{
