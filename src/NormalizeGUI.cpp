@@ -10,7 +10,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	try
 	{
 		Application->Initialize();
-		Application->Title = "Normalize GUI v0.1";
+		Application->Title = "Normalize GUI";
 		Application->CreateForm(__classid(TNormalize_Main), &Normalize_Main);
                  Application->CreateForm(__classid(TAboutBox), &AboutBox);
                  Application->CreateForm(__classid(TLanguage_form), &Language_form);

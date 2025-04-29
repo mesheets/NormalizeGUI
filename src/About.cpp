@@ -1,5 +1,5 @@
 /*
-	About.cpp - About box source file for Normalize GUI - v0.2
+	About.cpp - About box source file for Normalize GUI
 	(c) 2001, Bruce Heller <bheller@bheller.com>
 
 	This file is part of Normalize GUI.
